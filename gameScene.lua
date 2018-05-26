@@ -65,16 +65,45 @@ function scene:show( event )
         	})
         sceneGroup:insert(ground2)
 
-        local character = display.newImage('./Assets/Sprites/character.png')
-        character.x = display.contentCenterX
-        character.y = display.contentCentery
-        character.id = 'character'
-        physics.addBody(character, 'dynamic', {
-        	friction = 0.5,
-        	bounce = 0.3
-        	})
-        character.isFixedRotation = true
-        sceneGroup:insert(character)
+        --local character = display.newImage('./Assets/Sprites/character.png')
+        --character.x = display.contentCenterX
+        --character.y = display.contentCentery
+        --character.id = 'character'
+        --physics.addBody(character, 'dynamic', {
+        --	friction = 0.5,
+        --	bounce = 0.3
+        --	})
+        --character.isFixedRotation = true
+        --sceneGroup:insert(character)
+
+        local sheetOptionsIdleNinja = {
+            width = 232,
+            height = 439,
+            numFrames = 10
+        }
+        local sheetIdleNinja = graphics.newImageSheet('./Assets/SpriteSheets/ninjaBoyIdle.png', sheetOptionsIdleNinja)
+
+        local sequence_data_ninja = {
+        {   
+            name = 'idle',
+            start = 1,
+            count = 10,
+            time = 800,
+            loopCount = 0,
+            sheet = sheetIdleNinja
+        }
+        }
+
+        local ninja = display.newSprite(sheetIdleNinja, sequence_data_ninja)
+        ninja.x = display.contentCenterX
+        ninja.y = display.contentCentery
+        physics.addBody(ninja, 'dynamic', {
+            fisics = 0.5,
+            bounce = 0.3
+            })
+        ninja.isFixedRotation = true
+        ninja:setSequence('idle')
+        ninja:play()
 
  
     elseif ( phase == "did" ) then

@@ -52,7 +52,7 @@ function scene:show( event )
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
         local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-        background:setFillColor(0.1, 0.4, 0.8)
+        background:setFillColor(0, 0.29, 1)
         sceneGroup:insert(background)
 
         local myText = display.newText('Splash Screen', display.contentCenterX, display.contentCenterY, native.SystemFont, 200)
